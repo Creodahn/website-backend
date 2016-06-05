@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  school_name: MyString
+  started: 2016-05-21
+  graduated: 2016-05-21
+  description: MyText
+
+two:
+  school_name: MyString
+  started: 2016-05-21
+  graduated: 2016-05-21
+  description: MyText

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company: MyString
+  url: 
+  started: 2016-05-21
+  ended: 2016-05-21
+  description: MyText
+
+two:
+  company: MyString
+  url: 
+  started: 2016-05-21
+  ended: 2016-05-21
+  description: MyText
