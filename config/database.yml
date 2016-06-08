@@ -6,17 +6,22 @@
 #
 development:
   adapter: postgresql
-  database: website_db_dev
-  pool: 5
-  timeout: 5000
+  host: localhost
+  username: user
+  database: app-dev
+
 test:
   adapter: postgresql
   database: website_db_test
   pool: 5
   timeout: 5000
+  username:
+  password:
 
 production:
   adapter: postgresql
   database: website_db_production
   pool: 5
   timeout: 5000
+  username:
+  password:
