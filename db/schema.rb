@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160604162120) do
+ActiveRecord::Schema.define(version: 20160615142402) do
+
+  create_table "blog_posts", force: :cascade do |t|
+    t.string  "title"
+    t.text    "content"
+    t.integer "person_id"
+  end
+
+  add_index "blog_posts", ["person_id"], name: "index_blog_posts_on_person_id"
 
   create_table "educations", force: :cascade do |t|
     t.string   "school_name"

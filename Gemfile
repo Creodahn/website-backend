@@ -4,6 +4,8 @@ gem 'puma'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
+# Use sqlite as dev database
+gem 'sqlite3'
 # Use postgres as database
 gem 'pg'
 # Use SCSS for stylesheets
