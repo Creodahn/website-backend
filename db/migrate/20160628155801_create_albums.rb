@@ -6,5 +6,7 @@ class CreateAlbums < ActiveRecord::Migration
 
       t.timestamps null: false
     end
+
+    add_reference :albums, :person, index: true
   end
 end

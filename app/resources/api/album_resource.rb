@@ -1,4 +1,4 @@
-class Api::BlogPostResource < Api::BaseResource
+class Api::AlbumResource < Api::BaseResource
   attribute :created_at
   attribute :description
   attribute :title
