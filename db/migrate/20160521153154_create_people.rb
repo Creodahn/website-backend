@@ -9,6 +9,8 @@ class CreatePeople < ActiveRecord::Migration
       t.string :location
       t.string :linkedin
       t.string :resume_url
+      t.string :login_key
+      t.string :token
 
       t.timestamps null: false
     end

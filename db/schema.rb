@@ -11,12 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615142402) do
+ActiveRecord::Schema.define(version: 20160628155801) do
+
+  create_table "albums", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "blog_posts", force: :cascade do |t|
-    t.string  "title"
-    t.text    "content"
-    t.integer "person_id"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "person_id"
   end
 
   add_index "blog_posts", ["person_id"], name: "index_blog_posts_on_person_id"
@@ -37,14 +46,15 @@ ActiveRecord::Schema.define(version: 20160615142402) do
     t.string   "file_name"
     t.string   "url"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "imagable_id"
+    t.string   "imagable_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "person_id"
-    t.integer  "project_id"
   end
 
+  add_index "images", ["imagable_type", "imagable_id"], name: "index_images_on_imagable_type_and_imagable_id"
   add_index "images", ["person_id"], name: "index_images_on_person_id"
-  add_index "images", ["project_id"], name: "index_images_on_project_id"
 
   create_table "people", force: :cascade do |t|
     t.string   "title"
@@ -54,6 +64,8 @@ ActiveRecord::Schema.define(version: 20160615142402) do
     t.string   "location"
     t.string   "linkedin"
     t.string   "resume_url"
+    t.string   "login_key"
+    t.string   "token"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "first_name"
@@ -77,6 +89,16 @@ ActiveRecord::Schema.define(version: 20160615142402) do
 
   add_index "projects", ["person_id"], name: "index_projects_on_person_id"
   add_index "projects", ["work_experience_id"], name: "index_projects_on_work_experience_id"
+
+  create_table "projects_skills", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "project_id"
+    t.integer  "skill_id"
+  end
+
+  add_index "projects_skills", ["project_id"], name: "index_projects_skills_on_project_id"
+  add_index "projects_skills", ["skill_id"], name: "index_projects_skills_on_skill_id"
 
   create_table "skills", force: :cascade do |t|
     t.string   "name"

@@ -11,6 +11,7 @@ class Api::PersonResource < Api::BaseResource
 
   has_one :profile_picture
 
+  has_many :blog_posts
   has_many :educations
   has_many :images
   has_many :projects

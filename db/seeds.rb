@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 image = Image.create(file_name: 'me.jpg', url: 'http://justindrew.net/imgs/me.jpg')
-person = Person.create(first_name: 'Justin', last_name: 'Drew', title: 'Full Stack Developer', birth_date: DateTime.strptime('12/28/1986', '%m/%d/%Y'), description: 'I am a web developer who is familiar with all aspects of the web application stack, from the front end to database design. I have worked both in teams and independently, and can work effectively and efficiently in either situation.', email: 'justin@justindrew.net', location: 'Rhinebeck, NY', profile_picture_id: image.id)
+person = Person.create(first_name: 'Justin', last_name: 'Drew', title: 'Web Developer', birth_date: DateTime.strptime('12/28/1986', '%m/%d/%Y'), description: 'I am a web developer who is familiar with all aspects of the web application stack, from the front end to database design. I have worked both in teams and independently, and can work effectively and efficiently in either situation.', email: 'justin@justindrew.net', location: 'Rhinebeck, NY', profile_picture_id: image.id)
 Education.create([{school_name: 'Lycoming College', started: DateTime.strptime('9/1/2005', '%m/%d/%Y'), graduated: DateTime.strptime('6/1/2009', '%m/%d/%Y'), description: '<p>Lycoming\'s computer science program mainly focused on C++, but also touched on web programming technologies, as well as database development and assembly language</p><p>While at Lycoming, I was the president of the college\'s ACM chapter from August 2007 to May 2009. I also participated in the ACM ICPC competitions from 2006 to 2008, and I was on our CCSCNE competition team in 2006 and 2009.</p>', person_id: person.id},
   {school_name: 'Rhinebeck Junior/Senior High School', started: DateTime.strptime('10/1/2001', '%m/%d/%Y'), graduated: DateTime.strptime('7/1/2005', '%m/%d/%Y'), description: '<p>In high school, I took most of the available advanced classes, including AP English. I also took a C++ programming class, which was my first experience with programming.</p>', person_id: person.id}])
 Skill.create([
@@ -71,6 +71,13 @@ Skill.create([
     years: 1,
     color: '#a22818',
     hover_color: '#d25848',
+    description: '',
+    person_id: person.id
+  }, {
+    name: 'Bootstrap',
+    years: 1,
+    color: '#6f5499',
+    hover_color: '#a28ec1',
     description: '',
     person_id: person.id
   }, {
@@ -165,18 +172,21 @@ Image.create([
     url: 'http://justindrew.net/imgs/connect_map.png',
     description: '',
     person_id: person.id,
-    project_id: projects.first.id
+    imagable_type: 'Project',
+    imagable_id: projects.first.id
   }, {
     file_name: 'connect_app.png',
     url: 'http://justindrew.net/imgs/connect_app.png',
     description: '',
     person_id: person.id,
-    project_id: projects.first.id
+    imagable_type: 'Project',
+    imagable_id: projects.first.id
   }, {
     file_name: 'connect_reviews.png',
     url: 'http://justindrew.net/imgs/connect_reviews.png',
     description: '',
     person_id: person.id,
-    project_id: projects.first.id
+    imagable_type: 'Project',
+    imagable_id: projects.first.id
   }
 ])

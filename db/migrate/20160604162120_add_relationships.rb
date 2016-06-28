@@ -7,9 +7,6 @@ class AddRelationships < ActiveRecord::Migration
     add_reference :projects, :person, index: true
     add_reference :images, :person, index: true
 
-    # Add projects key to images
-    add_reference :images, :project, index: true
-
     # Add work_experiences key to projects
     add_reference :projects, :work_experience, index: true
 

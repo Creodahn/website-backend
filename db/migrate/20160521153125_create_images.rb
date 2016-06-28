@@ -4,6 +4,7 @@ class CreateImages < ActiveRecord::Migration
       t.string :file_name
       t.string :url
       t.text :description
+      t.references :imagable, polymorphic: true, index: true
 
       t.timestamps null: false
     end

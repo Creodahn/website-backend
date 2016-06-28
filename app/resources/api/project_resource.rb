@@ -8,4 +8,5 @@ class Api::ProjectResource < Api::BaseResource
   has_one :person
 
   has_many :images
+  has_many :skills
 end

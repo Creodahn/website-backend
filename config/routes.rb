@@ -6,5 +6,7 @@ Rails.application.routes.draw do
     jsonapi_resources :images
     jsonapi_resources :educations
     jsonapi_resources :people
+    jsonapi_resources :blog_posts
+    jsonapi_resources :albums
   end
 end
