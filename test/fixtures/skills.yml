@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: 
-  years: 1
-  description: MyText
-
-two:
-  name: 
-  years: 1
-  description: MyText
+# one:
+#   name:
+#   years: 1
+#   description: MyText
+#
+# two:
+#   name:
+#   years: 1
+#   description: MyText

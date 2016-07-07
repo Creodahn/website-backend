@@ -18,7 +18,10 @@ ActiveRecord::Schema.define(version: 20160628155801) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "person_id"
   end
+
+  add_index "albums", ["person_id"], name: "index_albums_on_person_id"
 
   create_table "blog_posts", force: :cascade do |t|
     t.string   "title"
@@ -66,6 +69,7 @@ ActiveRecord::Schema.define(version: 20160628155801) do
     t.string   "resume_url"
     t.string   "login_key"
     t.string   "token"
+    t.string   "password_digest"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "first_name"
@@ -73,6 +77,7 @@ ActiveRecord::Schema.define(version: 20160628155801) do
     t.integer  "profile_picture_id"
   end
 
+  add_index "people", ["email"], name: "index_people_on_email", unique: true
   add_index "people", ["profile_picture_id"], name: "index_people_on_profile_picture_id"
 
   create_table "projects", force: :cascade do |t|

@@ -1,13 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  age: 1
-  description: MyText
-  email: MyString
-
-two:
-  name: MyString
-  age: 1
-  description: MyText
-  email: MyString
+# one:
+#   first_name: Justin
+#   last_name: Drew
+#   birth_date: "12/28/1986"
+#   description: test
+#   email: justin@justindrew.net
+#   password: testTEST
+#   password_confirmation: testTEST
+#   linkedin: test
+#   location: Rhinebeck, NY
+#   resume_url: test
+#   title: test
+#
+# two:
+#   first_name: John
+#   last_name: Smith
+#   birth_date: "12/28/1986"
+#   description: test
+#   email: john@johnsmith.net
+#   password: testTEST
+#   password_confirmation: testTEST
+#   linkedin: test
+#   location: Anytown, USA
+#   resume_url: test
+#   title: test

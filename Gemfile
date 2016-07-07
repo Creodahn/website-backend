@@ -48,5 +48,6 @@ group :development do
   gem 'spring'
 end
 
+gem 'bcrypt'
 gem 'jsonapi-resources'
 gem 'rack-cors', :require => 'rack/cors'

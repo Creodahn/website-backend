@@ -11,8 +11,11 @@ class CreatePeople < ActiveRecord::Migration
       t.string :resume_url
       t.string :login_key
       t.string :token
+      t.string :password_digest
 
       t.timestamps null: false
     end
+
+    add_index :people, :email, unique: true
   end
 end
