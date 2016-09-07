@@ -9,4 +9,6 @@ Rails.application.routes.draw do
     jsonapi_resources :blog_posts
     jsonapi_resources :albums
   end
+
+  post '/login', to: 'sessions#create'
 end

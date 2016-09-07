@@ -67,11 +67,11 @@ ActiveRecord::Schema.define(version: 20160628155801) do
     t.string   "location"
     t.string   "linkedin"
     t.string   "resume_url"
-    t.string   "login_key"
-    t.string   "token"
+    t.date     "authenticated_at"
+    t.string   "authentication_token"
     t.string   "password_digest"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "profile_picture_id"
