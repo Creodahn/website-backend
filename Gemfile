@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'puma'
 
+gem 'activerecord'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use sqlite as dev database

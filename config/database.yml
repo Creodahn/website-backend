@@ -1,15 +1,20 @@
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
+  database: personal_website
   pool: 5
   timeout: 5000
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  url: <%= ENV['DATABASE_URL'] %>
 
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: url: <%= ENV['DATABASE_URL'] %>
+
+production:
+    <<: *default
+    database: url: <%= ENV['DATABASE_URL'] %>
 # development:
 #   adapter: postgresql
 #   host: ec2-23-21-235-126.compute-1.amazonaws.com

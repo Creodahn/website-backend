@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160628155801) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "albums", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 20160628155801) do
     t.integer  "person_id"
   end
 
-  add_index "albums", ["person_id"], name: "index_albums_on_person_id"
+  add_index "albums", ["person_id"], name: "index_albums_on_person_id", using: :btree
 
   create_table "blog_posts", force: :cascade do |t|
     t.string   "title"
@@ -31,7 +34,7 @@ ActiveRecord::Schema.define(version: 20160628155801) do
     t.integer  "person_id"
   end
 
-  add_index "blog_posts", ["person_id"], name: "index_blog_posts_on_person_id"
+  add_index "blog_posts", ["person_id"], name: "index_blog_posts_on_person_id", using: :btree
 
   create_table "educations", force: :cascade do |t|
     t.string   "school_name"
@@ -43,7 +46,7 @@ ActiveRecord::Schema.define(version: 20160628155801) do
     t.integer  "person_id"
   end
 
-  add_index "educations", ["person_id"], name: "index_educations_on_person_id"
+  add_index "educations", ["person_id"], name: "index_educations_on_person_id", using: :btree
 
   create_table "images", force: :cascade do |t|
     t.string   "file_name"
@@ -56,8 +59,8 @@ ActiveRecord::Schema.define(version: 20160628155801) do
     t.integer  "person_id"
   end
 
-  add_index "images", ["imagable_type", "imagable_id"], name: "index_images_on_imagable_type_and_imagable_id"
-  add_index "images", ["person_id"], name: "index_images_on_person_id"
+  add_index "images", ["imagable_type", "imagable_id"], name: "index_images_on_imagable_type_and_imagable_id", using: :btree
+  add_index "images", ["person_id"], name: "index_images_on_person_id", using: :btree
 
   create_table "people", force: :cascade do |t|
     t.string   "title"
@@ -77,8 +80,8 @@ ActiveRecord::Schema.define(version: 20160628155801) do
     t.integer  "profile_picture_id"
   end
 
-  add_index "people", ["email"], name: "index_people_on_email", unique: true
-  add_index "people", ["profile_picture_id"], name: "index_people_on_profile_picture_id"
+  add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
+  add_index "people", ["profile_picture_id"], name: "index_people_on_profile_picture_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -92,8 +95,8 @@ ActiveRecord::Schema.define(version: 20160628155801) do
     t.integer  "work_experience_id"
   end
 
-  add_index "projects", ["person_id"], name: "index_projects_on_person_id"
-  add_index "projects", ["work_experience_id"], name: "index_projects_on_work_experience_id"
+  add_index "projects", ["person_id"], name: "index_projects_on_person_id", using: :btree
+  add_index "projects", ["work_experience_id"], name: "index_projects_on_work_experience_id", using: :btree
 
   create_table "projects_skills", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -102,8 +105,8 @@ ActiveRecord::Schema.define(version: 20160628155801) do
     t.integer  "skill_id"
   end
 
-  add_index "projects_skills", ["project_id"], name: "index_projects_skills_on_project_id"
-  add_index "projects_skills", ["skill_id"], name: "index_projects_skills_on_skill_id"
+  add_index "projects_skills", ["project_id"], name: "index_projects_skills_on_project_id", using: :btree
+  add_index "projects_skills", ["skill_id"], name: "index_projects_skills_on_skill_id", using: :btree
 
   create_table "skills", force: :cascade do |t|
     t.string   "name"
@@ -116,7 +119,7 @@ ActiveRecord::Schema.define(version: 20160628155801) do
     t.integer  "person_id"
   end
 
-  add_index "skills", ["person_id"], name: "index_skills_on_person_id"
+  add_index "skills", ["person_id"], name: "index_skills_on_person_id", using: :btree
 
   create_table "work_experiences", force: :cascade do |t|
     t.string   "company"
@@ -130,6 +133,6 @@ ActiveRecord::Schema.define(version: 20160628155801) do
     t.integer  "person_id"
   end
 
-  add_index "work_experiences", ["person_id"], name: "index_work_experiences_on_person_id"
+  add_index "work_experiences", ["person_id"], name: "index_work_experiences_on_person_id", using: :btree
 
 end
