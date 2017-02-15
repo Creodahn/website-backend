@@ -64,7 +64,8 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
-    jsonapi-resources (0.7.0)
+    jsonapi-resources (0.8.3)
+      concurrent-ruby
       rails (>= 4.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
@@ -151,7 +152,7 @@ DEPENDENCIES
   byebug
   jbuilder (~> 2.0)
   jquery-rails
-  jsonapi-resources
+  jsonapi-resources (~> 0.8.0)
   pg
   puma
   rack-cors
@@ -161,6 +162,9 @@ DEPENDENCIES
   spring
   turbolinks
   web-console (~> 2.0)
+
+RUBY VERSION
+   ruby 2.2.2p95
 
 BUNDLED WITH
    1.14.3

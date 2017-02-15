@@ -2,12 +2,13 @@ class Api::PersonResource < Api::BaseResource
   attribute :birth_date
   attribute :description
   attribute :email
-  attribute :first_name
-  attribute :last_name
   attribute :linkedin
   attribute :location
+  attribute :name
   attribute :resume_url
   attribute :title
+
+  belongs_to :user
 
   has_one :profile_picture
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160628155801) do
+ActiveRecord::Schema.define(version: 20170215004347) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20160628155801) do
   add_index "images", ["person_id"], name: "index_images_on_person_id", using: :btree
 
   create_table "people", force: :cascade do |t|
+    t.string   "name"
     t.string   "title"
     t.date     "birth_date"
     t.text     "description"
@@ -70,18 +71,15 @@ ActiveRecord::Schema.define(version: 20160628155801) do
     t.string   "location"
     t.string   "linkedin"
     t.string   "resume_url"
-    t.date     "authenticated_at"
-    t.string   "authentication_token"
-    t.string   "password_digest"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.string   "first_name"
-    t.string   "last_name"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "profile_picture_id"
+    t.integer  "user_id"
   end
 
   add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
   add_index "people", ["profile_picture_id"], name: "index_people_on_profile_picture_id", using: :btree
+  add_index "people", ["user_id"], name: "index_people_on_user_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.string   "name"
@@ -120,6 +118,15 @@ ActiveRecord::Schema.define(version: 20160628155801) do
   end
 
   add_index "skills", ["person_id"], name: "index_skills_on_person_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.string   "password_digest"
+    t.date     "authenticated_at"
+    t.string   "authentication_token"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "work_experiences", force: :cascade do |t|
     t.string   "company"

@@ -1,12 +1,10 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+
 image = Image.create(file_name: 'me.jpg', url: 'http://justindrew.net/imgs/me.jpg')
-person = Person.create(first_name: 'Justin', last_name: 'Drew', title: 'Web Developer', birth_date: DateTime.strptime('12/28/1986', '%m/%d/%Y'), description: 'I am a web developer who is familiar with all aspects of the web application stack, from the front end to database design. I have worked both in teams and independently, and can work effectively and efficiently in either situation.', email: 'justin@justindrew.net', location: 'Rhinebeck, NY', profile_picture_id: image.id, password: "testTEST", password_confirmation: "testTEST")
+user = User.create(username: 'creodahn', password: 'testTEST')
+person = Person.create(name: 'Justin Drew', title: 'Web Developer', birth_date: DateTime.strptime('12/28/1986', '%m/%d/%Y'), description: 'I am a web developer who is familiar with all aspects of the web application stack, from the front end to database design. I have worked both in teams and independently, and can work effectively and efficiently in either situation.', email: 'justin@justindrew.net', location: 'Rhinebeck, NY', profile_picture_id: image.id, user_id: user.id)
 image.imagable_type = 'Person'
 image.imagable_id = person.id
 image.save

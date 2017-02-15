@@ -3,13 +3,12 @@ class Person < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :first_name, presence: true, length: { maximum: 50 }
-  validates :last_name, presence: true, length: { maximum: 50 }
-  validates :password, presence: true, length: { minimum: 8 }
+  validates :name, presence: true, length: { maximum: 100 }
 
   before_save :email_case
 
   belongs_to :profile_picture, :class_name => 'Image'
+  belongs_to :user
 
   has_many :blog_posts
   has_many :educations
@@ -17,8 +16,6 @@ class Person < ActiveRecord::Base
   has_many :projects
   has_many :skills
   has_many :images, as: :imagable
-
-  has_secure_password
 
   def email_case
     email.downcase!

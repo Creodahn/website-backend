@@ -25,12 +25,14 @@ Rails.application.configure do
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
+  config.assets.compress = false
   config.assets.debug = true
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
-
+  config.logger = ActiveSupport::Logger.new(
+                     config.paths['log'].first, 1, 50 * 1024 * 1024)
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
@@ -38,4 +40,12 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              ENV['SMTP_SERVER'],
+    port:                 ENV['SMTP_PORT'],
+    user_name:            ENV['SMTP_LOGIN'],
+    password:             ENV['SMTP_PASSWORD'],
+    authentication:       :login,
+    enable_starttls_auto: true }
 end

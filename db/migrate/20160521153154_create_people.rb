@@ -9,9 +9,6 @@ class CreatePeople < ActiveRecord::Migration
       t.string :location
       t.string :linkedin
       t.string :resume_url
-      t.date :authenticated_at
-      t.string :authentication_token
-      t.string :password_digest
 
       t.timestamps null: false
     end
