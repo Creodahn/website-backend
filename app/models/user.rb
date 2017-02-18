@@ -24,6 +24,16 @@ class User < ActiveRecord::Base
 
   # Returns a random token.
   def User.new_token
-    SecureRandom.urlsafe_base64
+    SecureRandom.base64(12)
+  end
+
+  def generate_auth_token
+    token = User.new_token
+    self.update_columns(authentication_token: token)
+    token
+  end
+
+  def invalidate_auth_token
+    self.update_columns(authentication_token: nil)
   end
 end

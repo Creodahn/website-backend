@@ -1,19 +1,28 @@
 class SessionsController < ApplicationController
-  # skip_before_filter :check_auth!
-  before_filter :login!
+  skip_before_action :validate_current_user, :only => [:create]
+
+  def create
+    u = User.find_by(username: params[:username])
+
+    return invalid_login_attempt unless u
+
+    if u.authenticate(params[:password])
+      auth_token = u.generate_auth_token
+      render json: { authentication_token: auth_token }
+    else
+      invalid_login_attempt
+    end
+  end
+
+  def destroy
+    u = current_user
+    u.invalidate_auth_token
+    head :ok
+  end
 
   private
-  def login!
-    u = User.find_by(email: params[:email])
 
-    if u && u.valid_password(params[:password])
-      current_user = u
-      current_user.update_attributes(
-        authenticated_at: DateTime.now,
-        authentication_token: SecureRandom.uuid
-      )
-    else
-      raise "error"
-    end
+  def invalid_login_attempt
+    render json: { errors: [ { detail: "Error with your login or password" }]}, status: 401
   end
 end
