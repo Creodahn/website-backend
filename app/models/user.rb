@@ -27,13 +27,13 @@ class User < ActiveRecord::Base
     SecureRandom.base64(12)
   end
 
-  def generate_auth_token
+  def generate_authentication_token
     token = User.new_token
     self.update_columns(authentication_token: token)
     token
   end
 
-  def invalidate_auth_token
+  def invalidate_authentication_token
     self.update_columns(authentication_token: nil)
   end
 end

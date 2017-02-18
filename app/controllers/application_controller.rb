@@ -6,13 +6,12 @@ class ApplicationController < JSONAPI::ResourceController
   skip_before_action :ensure_valid_accept_media_type, if: "Rails.env.development?"
 
   def context
-    {current_user: current_user,
-     token: bearer_token}
+    { current_user: current_user, token: token }
   end
 
   private
 
-  def bearer_token
+  def token
     pattern = /^Bearer /
     header  = request.env['HTTP_AUTHORIZATION']
     header.gsub(pattern, '') if header && header.match(pattern)
@@ -23,11 +22,7 @@ class ApplicationController < JSONAPI::ResourceController
   end
 
   def authenticate_token
-    authenticate_with_http_token do |token, options|
-     u = User.find_by(auth_token: token)
-
-     return u
-    end
+    return User.find_by(authentication_token: token)
   end
 
   def render_unauthorized
