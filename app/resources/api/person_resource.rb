@@ -18,4 +18,7 @@ class Api::PersonResource < Api::BaseResource
   has_many :projects
   has_many :skills
   has_many :work_experiences
+
+  filter :email
+  filter :name
 end

@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   skip_before_action :validate_current_user, :only => [:create]
 
   def create
-    u = User.find_by(username: params[:username])
+    u = User.find_by_username(params[:username])
 
     return invalid_login_attempt unless u
 

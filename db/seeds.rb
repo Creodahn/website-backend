@@ -2,14 +2,42 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
 
-image = Image.create(file_name: 'me.jpg', url: 'http://justindrew.net/imgs/me.jpg')
-user = User.create(username: 'creodahn', password: 'testTEST')
-person = Person.create(name: 'Justin Drew', title: 'Web Developer', birth_date: DateTime.strptime('12/28/1986', '%m/%d/%Y'), description: 'I am a web developer who is familiar with all aspects of the web application stack, from the front end to database design. I have worked both in teams and independently, and can work effectively and efficiently in either situation.', email: 'justin@justindrew.net', location: 'Rhinebeck, NY', profile_picture_id: image.id, user_id: user.id)
+image = Image.create(
+  file_name: 'me.jpg',
+  url: 'http://justindrew.net/imgs/me.jpg'
+  )
+user = User.create(
+  # username: 'creodahn',
+  password: 'testTEST'
+)
+person = Person.create(
+  name: 'Justin Drew',
+  title: 'Web Developer',
+  birth_date: DateTime.strptime('12/28/1986', '%m/%d/%Y'),
+  description: 'I am a web developer who is familiar with all aspects of the web application stack, from the front end to database design. I have worked both in teams and independently, and can work effectively and efficiently in either situation.',
+  email: 'justin@justindrew.net',
+  location: 'Rhinebeck, NY',
+  profile_picture_id: image.id,
+  user_id: user.id
+)
 image.imagable_type = 'Person'
 image.imagable_id = person.id
 image.save
-Education.create([{school_name: 'Lycoming College', started: DateTime.strptime('9/1/2005', '%m/%d/%Y'), graduated: DateTime.strptime('6/1/2009', '%m/%d/%Y'), description: '<p>Lycoming\'s computer science program mainly focused on C++, but also touched on web programming technologies, as well as database development and assembly language</p><p>While at Lycoming, I was the president of the college\'s ACM chapter from August 2007 to May 2009. I also participated in the ACM ICPC competitions from 2006 to 2008, and I was on our CCSCNE competition team in 2006 and 2009.</p>', person_id: person.id},
-  {school_name: 'Rhinebeck Junior/Senior High School', started: DateTime.strptime('10/1/2001', '%m/%d/%Y'), graduated: DateTime.strptime('7/1/2005', '%m/%d/%Y'), description: '<p>In high school, I took most of the available advanced classes, including AP English. I also took a C++ programming class, which was my first experience with programming.</p>', person_id: person.id}])
+Education.create([
+  {
+    school_name: 'Lycoming College',
+    started: DateTime.strptime('9/1/2005', '%m/%d/%Y'),
+    graduated: DateTime.strptime('6/1/2009', '%m/%d/%Y'),
+    description: '<p>Lycoming\'s computer science program mainly focused on C++, but also touched on web programming technologies, as well as database development and assembly language</p><p>While at Lycoming, I was the president of the college\'s ACM chapter from August 2007 to May 2009. I also participated in the ACM ICPC competitions from 2006 to 2008, and I was on our CCSCNE competition team in 2006 and 2009.</p>',
+    person_id: person.id
+  },
+  {
+    school_name: 'Rhinebeck Junior/Senior High School',
+    started: DateTime.strptime('10/1/2001', '%m/%d/%Y'),
+    graduated: DateTime.strptime('7/1/2005', '%m/%d/%Y'),
+    description: '<p>In high school, I took most of the available advanced classes, including AP English. I also took a C++ programming class, which was my first experience with programming.</p>',
+    person_id: person.id
+  }])
 Skill.create([
   {
     name: 'T-SQL',

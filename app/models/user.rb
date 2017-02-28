@@ -15,6 +15,16 @@ class User < ActiveRecord::Base
     end
   end
 
+  def username
+    self.person.email
+  end
+
+  def User.find_by_username(username)
+    p = Person.find_by(email: username)
+
+    p.blank? ? nil : p.user
+  end
+
   # Returns the hash digest of the given string.
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

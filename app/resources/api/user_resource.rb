@@ -4,4 +4,6 @@ class Api::UserResource < JSONAPI::Resource
   attribute :username
 
   has_one :person
+
+  filter :username
 end

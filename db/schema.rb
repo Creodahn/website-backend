@@ -120,7 +120,6 @@ ActiveRecord::Schema.define(version: 20170215004347) do
   add_index "skills", ["person_id"], name: "index_skills_on_person_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
     t.string   "password_digest"
     t.date     "authenticated_at"
     t.string   "authentication_token"
