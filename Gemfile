@@ -45,6 +45,13 @@ group :development do
   gem 'spring'
 end
 
+group :assets do
+  gem 'therubyracer'
+  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier'
+end
+
 gem 'bcrypt'
 gem 'jsonapi-resources', '~> 0.8.0'
 gem 'rack-cors', :require => 'rack/cors'
