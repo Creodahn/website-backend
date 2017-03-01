@@ -7,7 +7,6 @@ image = Image.create(
   url: 'http://justindrew.net/imgs/me.jpg'
   )
 user = User.create(
-  # username: 'creodahn',
   password: 'testTEST'
 )
 person = Person.create(

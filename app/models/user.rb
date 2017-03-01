@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   def User.find_by_username(username)
     p = Person.find_by(email: username)
 
-    p.blank? ? nil : p.user
+    p.nil? ? nil : p.user
   end
 
   # Returns the hash digest of the given string.
